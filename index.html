@@ -5,8 +5,62 @@
   <title>Document</title>
 </head>
 <body>
+  <div id="wrapper">
+    <ul id="messages">
+      
+    </ul>
+  </div>
   <script>
-    console.log('Hello world')
+    (function() {
+
+      var URI = 'ws://demos.kaazing.com/echo'
+      var websocket = null
+
+      var init = function() {
+        websocket = new WebSocket(URI)
+
+        websocket.onopen = function(event) {
+          onOpen(event)
+        }
+
+        websocket.onmessage = function(event) {
+          onMessage(event)
+        }
+
+        websocket.onclose = function(event) {
+          onClose(event)
+        }
+
+      }
+
+      function onOpen(e) {
+        console.log('Connected', e)
+        sendMessage('Hello world usando WebSocket!')
+      }
+
+      function onMessage(event) {
+        console.log('Recebendo mensagem')
+        console.log('Mensagem do onOpen: ', event.data)
+        sendMessage('\n...Menssagem do onMessage!') // Sem o fechamento da conexão a mensagem ficará sendo enviada
+        var msg = document.getElementById('messages')
+        var item = document.createElement('li')
+        item.innerHTML = event.data
+
+        msg.appendChild(item)
+        websocket.close() // Fechamento da conexão
+      }
+
+      function onClose(e) {
+        console.log('Conexão fechada')
+      }
+
+      function sendMessage(str) {
+        websocket.send(str)
+      }
+
+      init()
+
+    })()
   </script>
 </body>
 </html>
