@@ -14,7 +14,7 @@ module.exports = (app) => {
 
   app.use(morgan('dev'))
   app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extend: false }))
+  app.use(bodyParser.urlencoded({ extended: false }))
   app.use(methodOverride('_method'))
   app.use(expressSession({
     secret: '&8&6asdgbu77as_=-asddas{}',
