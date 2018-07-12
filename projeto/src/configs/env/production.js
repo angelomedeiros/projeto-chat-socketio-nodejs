@@ -9,7 +9,7 @@ const path             = require('path')
 module.exports = (app) => {
   app.set('port', 8000)
   app.set('host', '127.0.0.1')
-  app.set('views', path.join(__dirname, './../../../build/views'))
+  app.set('views', path.join(__dirname, './../../../dist/views'))
   app.set('view engine', 'hbs')
 
   app.use(morgan('combined'))
