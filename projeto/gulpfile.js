@@ -87,7 +87,7 @@ gulp.task('build-fonts', () => {
 })
 
 gulp.task('watch', () => {
-  gulp.watch(['src/views/**/.*hbs'], ['build-html'])
+  gulp.watch(['src/views/**/*.hbs'], ['build-html'])
   gulp.watch(['public/scss/**'], ['build-css'])
   gulp.watch(['public/fonts/**'], ['build-fonts'])
   gulp.watch(paths.jsSrc.concat('**/*.js'), ['build-js'])
