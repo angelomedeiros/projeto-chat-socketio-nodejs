@@ -9,3 +9,6 @@ body {
   padding: 2rem; }
   #footer.footer-inverse p {
     color: white; }
+
+.inline {
+  display: inline-block; }
