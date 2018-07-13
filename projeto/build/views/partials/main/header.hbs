@@ -1,44 +1,46 @@
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="nav-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav">
-				<span class="sr-only"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a href="/" class="navbar-brand">ChatAngelo</a>
+<header id="header">
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="nav-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav">
+					<span class="sr-only"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/" class="navbar-brand">ChatAngelo</a>
+			</div>
+			<div class="collapse navbar-collapse" id="nav">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="/" class="">home</a>
+					</li>
+					<li class="dropdown">
+						<a data-toggle="dropdown" href="" class="dropdown-toggle">
+							users
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/users">List</a>
+								<a href="/users/new">Create</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a data-toggle="dropdown" href="" class="dropdown-toggle">
+							rooms
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="/rooms">List</a>
+								<a href="/rooms/new">Create</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="collapse navbar-collapse" id="nav">
-			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="/" class="">home</a>
-				</li>
-				<li class="dropdown">
-					<a data-toggle="dropdown" href="" class="dropdown-toggle">
-						users
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="/users">List</a>
-							<a href="/users/new">Create</a>
-						</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a data-toggle="dropdown" href="" class="dropdown-toggle">
-						rooms
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="/rooms">List</a>
-							<a href="/rooms/new">Create</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
+	</nav>
+</header>

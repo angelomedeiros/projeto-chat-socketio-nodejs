@@ -1,2 +1,11 @@
 body {
   background: whitesmoke; }
+
+#header .navbar {
+  border-radius: 0; }
+
+#footer.footer-inverse {
+  background: #4D4D4D;
+  padding: 2rem; }
+  #footer.footer-inverse p {
+    color: white; }
