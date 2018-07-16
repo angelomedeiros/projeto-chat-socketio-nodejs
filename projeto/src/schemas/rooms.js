@@ -9,6 +9,10 @@ const Rooms = new mongoose.Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
   enable: {
     type: Boolean,
     required: true,
@@ -20,7 +24,7 @@ const Rooms = new mongoose.Schema({
   }],
   created: {
     type: Date,
-    required: true.
+    required: true,
     default: new Date()
   }
 

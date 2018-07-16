@@ -38,4 +38,6 @@ module.exports = (app) => {
   }))
 
   mongoose.connect(app.get('mongo_url'))
+
+  require('./../helpers')(hbs)
 }
