@@ -80,7 +80,7 @@ gulp.task('build-images', () => {
 
 gulp.task('build', ['build-html', 'build-css', 'build-js', 'build-images', 'build-fonts'], () => {
   return connect.server({
-    root: 'src',
+    root: 'build',
     livereload: true
   })
 })

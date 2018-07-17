@@ -2,53 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/application.css">
 </head>
 <body>
 
   <main>
-    <aside class="col-xs-6 col-md-2">
+    <aside class="col-xs-6 col-md-2 chatbar">
 
-      <i class="fa fa-commenting-o"></i>
-      <h4>Chatschool</h4>
-      <ul>
-        <li>
-            <h4>Canais</h4>
+      <div class="col-xs-12 title">
+        <i class="fa fa-commenting-o"></i>
+        <h4>Chatschool</h4>        
+      </div>
+
+      <ul class="list-group channels">
+        <li class="list-group-item title">
+            <h4>Canais(3)</h4>
         </li>
-        <li>Canal 1</li>
+        <li class="list-group-item"><i class="fa fa-comment-o"></i> Canal 1</li>
+        <li class="list-group-item"><i class="fa fa-comment-o"></i> Canal 2</li>
+        <li class="list-group-item"><i class="fa fa-comment-o"></i> Canal 3</li>
       </ul>
-      <ul>
-        <li>
+
+      <ul class="list-group messages">
+        <li class="list-group-item title">
             <h4>Mensagens</h4>
         </li>
-        <li>Fabrício</li>
+        <li class="list-group-item">fabrício pessoa</li>
       </ul>
+
     </aside>
+
+    <section class="col-xs-6 col-md-10">
+      <h1>Chatbox</h1>
+
+      <header class="col-xs-12">
+        <h2>Header chatbox</h2>
+      </header>
+
+      <div class="col-xs-12">
+        <h2>Conversation frame</h2>
+      </div>
+
+      <div class="col-xs-12">
+        <form>
+          <input type="text" name="message" class="form-control" placeholder="Type your message here">
+        </form>
+      </div>
+
+    </section>
+
   </main>
 
-  <section class="col-xs-6 col-md-10">
-    <h1>Chatbox</h1>
-
-    <header class="col-xs-12">
-      <h2>Header chatbox</h2>
-    </header>
-
-    <div class="col-xs-12">
-      <h2>Conversation frame</h2>
-    </div>
-
-    <div class="col-xs-12">
-      <form>
-        <input type="text" name="message" class="form-control" placeholder="Type your message here">
-      </form>
-    </div>
-
-  </section>
   
 
 

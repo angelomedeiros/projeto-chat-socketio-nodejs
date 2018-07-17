@@ -1,0 +1,52 @@
+html {
+  min-height: 100%;
+  height: 100%; }
+
+body {
+  min-height: 100%;
+  height: 100%; }
+
+main {
+  min-height: 100%;
+  height: 100%; }
+
+.chatbar {
+  padding: 0;
+  background: #3c382c;
+  min-height: 100%;
+  height: 100%; }
+  .chatbar .title {
+    color: white;
+    background: #322f24;
+    padding: 1rem 15px; }
+    .chatbar .title h4 {
+      display: inline-block; }
+  .chatbar .channels {
+    margin: 6rem 0; }
+    .chatbar .channels .list-group-item {
+      border: 0;
+      background: #3c382c;
+      color: #857D64;
+      cursor: pointer; }
+      .chatbar .channels .list-group-item.title h4 {
+        font-weight: bold;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 1em; }
+      .chatbar .channels .list-group-item:hover, .chatbar .channels .list-group-item:active {
+        background: #322f24; }
+  .chatbar .messages {
+    margin: 3.5rem 0; }
+    .chatbar .messages .list-group-item {
+      border: 0;
+      background: #3c382c;
+      color: #857D64;
+      text-transform: capitalize;
+      cursor: pointer; }
+      .chatbar .messages .list-group-item.title h4 {
+        font-weight: bold;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 1em; }
+      .chatbar .messages .list-group-item:hover, .chatbar .messages .list-group-item:active {
+        background: #322f24; }
