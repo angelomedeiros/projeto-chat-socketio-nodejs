@@ -40,6 +40,8 @@ module.exports = (app) => {
   }))
 
   mongoose.connect(app.get('mongo_url'))
+  app.use(passport.initialize())
+  app.use(passport.session())
   passport.use(new LocalStrategy(require('./../../schemas/users').authenticate()))
   passport.serializeUser(require('./../../schemas/users').serializeUser())
   passport.deserializeUser(require('./../../schemas/users').deserializeUser())
