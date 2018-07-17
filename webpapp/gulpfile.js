@@ -1,21 +1,22 @@
-import gulp from 'gulp'
-import notify from 'gulp-notify'
-import livereload from 'gulp-livereload'
-import changed from 'gulp-changed'
-import concat from 'gulp-concat'
-import plumber from 'gulp-plumber'
-import imagemin from 'gulp-imagemin'
-import minifyCss from 'gulp-minify-css'
-import minifyHtml from 'gulp-minify-html'
-import rev from 'gulp-rev'
-import revCollector from 'gulp-rev-collector'
-import del from 'del'
-import uglify from 'gulp-uglify'
-import connect from 'gulp-connect'
-import sass from 'gulp-sass'
+const gulp = require('gulp')
+const notify = require('gulp-notify')
+const gutil = require('gulp-util')
+const livereload = require('gulp-livereload')
+const changed = require('gulp-changed')
+const concat = require('gulp-concat')
+const plumber = require('gulp-plumber')
+const imagemin = require('gulp-imagemin')
+const minifyCss = require('gulp-minify-css')
+const minifyHtml = require('gulp-minify-html')
+const rev = require('gulp-rev')
+const revCollector = require('gulp-rev-collector')
+const del = require('del')
+const uglify = require('gulp-uglify')
+const connect = require('gulp-connect')
+const sass = require('gulp-sass')
 
 const paths = {
-  fontSrc : 'src/fonts/',
+  fontsSrc : 'src/fonts/',
   htmlSrc : 'src/',
   sassSrc : 'src/scss/',
   jsSrc   : 'src/js/',
