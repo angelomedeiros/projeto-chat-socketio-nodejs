@@ -1,6 +1,7 @@
-const express = require('express')
-const router = express.Router()
+const express    = require('express')
+const isLoggedIn = require('./../../middleware/isloggedin')
+const router     = express.Router()
 
-router.get('/', require('./../../services/main'))
+router.get('/', isLoggedIn, require('./../../services/main'))
 
 module.exports = router
