@@ -10,37 +10,39 @@
 				</button>
 				<a href="/" class="navbar-brand">ChatAngelo</a>
 			</div>
-			<div class="collapse navbar-collapse" id="nav">
-				<ul class="nav navbar-nav">
-					<li class="active">
-						<a href="/" class="">home</a>
-					</li>
-					<li class="dropdown">
-						<a data-toggle="dropdown" href="" class="dropdown-toggle">
-							users
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="/users">List</a>
-								<a href="/users/new">Create</a>
-							</li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a data-toggle="dropdown" href="" class="dropdown-toggle">
-							rooms
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="/rooms">List</a>
-								<a href="/rooms/new">Create</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+			{{#if user_logged}}
+				<div class="collapse navbar-collapse" id="nav">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="/" class="">home</a>
+						</li>
+						<li class="dropdown">
+							<a data-toggle="dropdown" href="" class="dropdown-toggle">
+								users
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="/users">List</a>
+									<a href="/users/new">Create</a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a data-toggle="dropdown" href="" class="dropdown-toggle">
+								rooms
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="/rooms">List</a>
+									<a href="/rooms/new">Create</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			{{/if}}
 		</div>
 	</nav>
 </header>

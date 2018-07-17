@@ -5,6 +5,7 @@ module.exports = (req, res) => {
 
   return res.render('users/create', {
     title: 'users page',
-    user
+    user,
+    user_logged: req.user
   })
 }

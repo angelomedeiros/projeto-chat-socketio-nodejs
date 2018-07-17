@@ -8,7 +8,8 @@ module.exports = (req, res) => {
          }
          return res.render('users/edit', {
           title: 'AngeloChat - edit',
-          user
+          user,
+          user_logged: req.user
          })
        })
        .catch( error => {

@@ -1,5 +1,6 @@
 module.exports = (req, res) => {
   res.render('main/index', {
-    title: 'Hi, Angelo!'
+    title: 'Hi, User!',
+    user_logged: req.user
   })
 }

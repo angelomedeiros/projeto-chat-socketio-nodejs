@@ -11,7 +11,8 @@ module.exports = (req, res) => {
       }
       return res.render('rooms/edit', {
         title: 'Rooms edit',
-        room
+        room,
+        user_logged: req.user
       })
     })
     .catch( error => {

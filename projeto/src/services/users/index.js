@@ -5,7 +5,8 @@ module.exports = (req, res) => {
        .then( users => {
           return res.render('users/index', {
             title: 'AngeloChat',
-            users
+            users,
+            user_logged: req.user
           })
        })
        .catch( error  => {
