@@ -27,6 +27,10 @@ app.use((req, res, next) => {
   next()
 })
 
+io.on('connection', (client) => {
+  console.log('Conexão bem sucedida')
+})
+
 require('./routes')(app)
 
 mongoose.connect('mongodb://127.0.0.1:27017/chatangelo')
