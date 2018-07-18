@@ -29,9 +29,17 @@ app.use((req, res, next) => {
 
 io.on('connection', (socket) => {
   console.log('Conexão bem sucedida')
+
   socket.on('message', data => {
-    console.log(data)
+    // console.log('Dado recebido: ' + data.message)
+
+    socket.emit('message', {
+      message: data.message.toUpperCase()
+    })
+    
   })
+
+
 })
 
 require('./routes')(app)
