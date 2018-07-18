@@ -1,5 +1,6 @@
 $(document).ready(() => {
   (function() {
+    $('.chatbox').hide()
     var getRooms = () => {
       return $.get('http://localhost:3000/rooms', data => {
         if (!data.status) {
@@ -39,9 +40,20 @@ $(document).ready(() => {
       roomName
     })
 
+    $('.conversation').html('')
+
     return false
   })
 
+  $('#btn_leave').on('click', function (e) {
+    var roomId = $(this).attr('channel')
+
+    socket.emit('leave room', {
+      room: roomId
+    })
+
+    return false
+  })
 
   $('#message').on('keypress', e => {
     if (e.which == 13 || e.keyCode == 13) {
@@ -75,6 +87,13 @@ $(document).ready(() => {
     currentRoom = data.room
     // console.log('Joined: ' + currentRoom)
     $('.username').html('@' + data.roomName)
+    $('.chatbox').show()
+  })
+
+  socket.on('leaved room', function(data) {
+    currentRoom = undefined
+    $('.chatbox').hide()
+    $('.conversation').html('')
   })
 
   socket.on('message room', data => {

@@ -49,6 +49,12 @@ sockets.on('connection', (socket) => {
     socket.emit('joined room', data)
   })
 
+  socket.on('leave room', function(data) {
+    socket.leave(data.room)
+    socket.room = ''
+    socket.emit('leaved room', true)
+  })
+
 })
 
 require('./routes')(app)
