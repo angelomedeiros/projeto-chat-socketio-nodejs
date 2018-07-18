@@ -23,7 +23,22 @@ $(document).ready(() => {
       })
     }
 
+    var getUsers = function () {
+      return $.get('http://localhost:3000/users', data => {
+        if (!data.status) {
+          return 
+        }
+
+        var users = data && data.users
+        users.forEach((user,index) => {
+          var userTemplate = '<li class="list-group-item"> '+ user.name +' </li>'
+          $('.messages').append(userTemplate)          
+        })
+      })
+    }
+
     getRooms()
+    getUsers()
   })()
 
   var socket = io('//localhost:3000')
