@@ -40,26 +40,46 @@ $(document).ready(() => {
     return false
   })
 
-  socket.on('joined room', data => {
-    currentRoom = data.room
-    console.log('Joined: ' + currentRoom)
-  })
 
-  $('#message').keypress( e => {
-    if (e.which == 13) {
-      var val = $('#message').val()
-      console.log('Val ' + val)
+  $('#message').on('keypress', e => {
+    if (e.which == 13 || e.keyCode == 13) {
+      var message = $('#message').val()
+      // console.log('Val ' + message)
+      if (!message) {
+        return
+      }
 
-      socket.emit('message', {
-        message: val
+      socket.emit('message room', {
+        message,
+        room: currentRoom
       })
+
+      var messageTempĺate = 
+        ' <div class="col-xs-12 message"> ' + 
+        '   <div class="avatar col-xs-6 col-md-1"> ' +
+        '     <h2>A</h2> ' +
+        '   </div> ' +
+        '   <p class="text col-xs-6 col-md-11">' + message + '</p> ' +
+        ' </div> '
+
+      $('.conversation').append(messageTempĺate)
+      $('#message').val('')
 
       e.preventDefault() // ou return false
     }
   })
 
-  socket.on('message', data => {
-    var template = 
+  socket.on('joined room', data => {
+    currentRoom = data.room
+    console.log('Joined: ' + currentRoom)
+  })
+
+  socket.on('message room', data => {
+    if (!data.message) {
+      return
+    }
+
+    var messageTempĺate = 
       ' <div class="col-xs-12 message"> ' + 
       '   <div class="avatar col-xs-6 col-md-1"> ' +
       '     <h2>A</h2> ' +
@@ -67,7 +87,7 @@ $(document).ready(() => {
       '   <p class="text col-xs-6 col-md-11">' + data.message + '</p> ' +
       ' </div> '
 
-    $('.conversation').append(template)
+    $('.conversation').append(messageTempĺate)
   })
 })
 
