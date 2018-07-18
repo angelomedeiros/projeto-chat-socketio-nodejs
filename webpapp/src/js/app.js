@@ -1,3 +1,14 @@
 var socket = io('//localhost:3000')
 
-// socket.on()
+$('#message').keypress( e => {
+  if (e.which == 13) {
+    var val = $('#message').val()
+    console.log('Val ' + val)
+
+    socket.emit('message', {
+      message: val
+    })
+
+    e.preventDefault() // ou return false
+  }
+})

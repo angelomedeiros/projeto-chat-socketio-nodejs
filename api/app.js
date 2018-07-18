@@ -27,8 +27,11 @@ app.use((req, res, next) => {
   next()
 })
 
-io.on('connection', (client) => {
+io.on('connection', (socket) => {
   console.log('Conexão bem sucedida')
+  socket.on('message', data => {
+    console.log(data)
+  })
 })
 
 require('./routes')(app)
