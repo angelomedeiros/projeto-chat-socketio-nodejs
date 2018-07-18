@@ -6,12 +6,18 @@ $(document).ready(() => {
           return
         }
 
+        var rooms = data && data.rooms
         var titleTemplate = 
               ' <li class="list-group-item title"> ' +
-              '   <h4>Canais (' + data.rooms.length + ')</h4> ' +
+              '   <h4>Canais (' + rooms.length + ')</h4> ' +
               ' </li> '
 
         $('.channels').append(titleTemplate)
+
+        rooms.forEach((room, index) => {
+          var roomTemplate = ' <li class="list-group-item" channel="' + room._id + '"><i class="fa fa-comment-o"></i> ' + room.name + ' </li> '
+          $('.channels').append(roomTemplate)
+        })
 
       })
     }
