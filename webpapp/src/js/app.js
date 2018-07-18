@@ -15,7 +15,7 @@ $(document).ready(() => {
         $('.channels').append(titleTemplate)
 
         rooms.forEach((room, index) => {
-          var roomTemplate = ' <li class="list-group-item channel" channel="' + room._id + '"><i class="fa fa-comment-o"></i> ' + room.name + ' </li> '
+          var roomTemplate = ' <li class="list-group-item channel" name="' + room.name + '" channel="' + room._id + '"><i class="fa fa-comment-o"></i> ' + room.name + ' </li> '
           $('.channels').append(roomTemplate)
         })
 
@@ -30,11 +30,13 @@ $(document).ready(() => {
 
   $('.channels').on('click', '.channel', function (e) {
     var roomId = $(this).attr('channel')
+    var roomName = $(this).attr('name')
 
-    console.log(roomId)
+    // console.log(roomName)
 
     socket.emit('join room', {
-      room: roomId
+      room: roomId,
+      roomName
     })
 
     return false
@@ -71,7 +73,8 @@ $(document).ready(() => {
 
   socket.on('joined room', data => {
     currentRoom = data.room
-    console.log('Joined: ' + currentRoom)
+    // console.log('Joined: ' + currentRoom)
+    $('.username').html('@' + data.roomName)
   })
 
   socket.on('message room', data => {
