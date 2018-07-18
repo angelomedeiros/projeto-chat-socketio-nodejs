@@ -31,7 +31,7 @@ $(document).ready(() => {
 
         var users = data && data.users
         users.forEach((user,index) => {
-          var userTemplate = '<li class="list-group-item"> '+ user.name +' </li>'
+          var userTemplate = '<li class="list-group-item user" user="' + user._id + '" username="' + user.name + '"> '+ user.name +' </li>'
           $('.messages').append(userTemplate)          
         })
       })
@@ -43,6 +43,7 @@ $(document).ready(() => {
 
   var socket = io('//localhost:3000')
   var currentRoom = undefined
+  var currentUser = undefined
 
   $('.channels').on('click', '.channel', function (e) {
     var roomId = $(this).attr('channel')
@@ -57,6 +58,19 @@ $(document).ready(() => {
 
     $('.conversation').html('')
 
+    return false
+  })
+
+  $('.messages').on('click', '.user',function (e) {
+    var username = $(this).attr('username')
+    var user = $(this).attr('user')
+
+    socket.emit('join user', {
+      userId: user,
+      username
+    })
+
+    $('.conversation').html('')
     return false
   })
 
@@ -78,10 +92,19 @@ $(document).ready(() => {
         return
       }
 
-      socket.emit('message room', {
-        message,
-        room: currentRoom
-      })
+      if (!currentRoom) {
+        socket.emit('message user', {
+          message,
+          user: currentUser
+        })
+      } 
+
+      if (currentRoom)  {
+        socket.emit('message room', {
+          message,
+          room: currentRoom
+        })        
+      }
 
       var messageTempĺate = 
         ' <div class="col-xs-12 message"> ' + 
@@ -98,6 +121,12 @@ $(document).ready(() => {
     }
   })
 
+  socket.on('joined user', data => {
+    currentUser = data.user
+    $('.username').html('@' + data.username)
+    $('.chatbox').show()
+  })
+
   socket.on('joined room', data => {
     currentRoom = data.room
     // console.log('Joined: ' + currentRoom)
@@ -111,7 +140,7 @@ $(document).ready(() => {
     $('.conversation').html('')
   })
 
-  socket.on('message room', data => {
+  socket.on('messaged', data => {
     if (!data.message) {
       return
     }

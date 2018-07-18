@@ -36,10 +36,23 @@ sockets.on('connection', (socket) => {
 
   socket.on('message room', data => {
     // console.log('Dado recebido: ' + data.message)
-    socket.broadcast.in(data.room).emit('message room', {
+    socket.broadcast.in(data.room).emit('messaged', {
       message: data.message.toUpperCase(),
       room: data.room
     })
+  })
+
+  socket.on('message user', data => {
+    socket.broadcast.in(data.user).emit('messaged', {
+      message: data.message,
+      user: data.user
+    })
+  })
+
+  socket.on('join user', data => {
+    socket.user = data.user
+    socket.join(socket.user)
+    socket.emit('joined user', data)
   })
 
   socket.on('join room', data => {
