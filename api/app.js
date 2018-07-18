@@ -29,16 +29,23 @@ app.use((req, res, next) => {
   next()
 })
 
-io.on('connection', (socket) => {
+var sockets = io.sockets
+
+sockets.on('connection', (socket) => {
   console.log('Conexão bem sucedida')
 
   socket.on('message', data => {
     // console.log('Dado recebido: ' + data.message)
-
     socket.emit('message', {
       message: data.message.toUpperCase()
     })
+  })
 
+  socket.on('join room', data => {
+    socket.room = data.room
+    socket.join(socket.room)
+
+    socket.emit('joined room', data)
   })
 
 })

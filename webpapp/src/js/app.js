@@ -15,7 +15,7 @@ $(document).ready(() => {
         $('.channels').append(titleTemplate)
 
         rooms.forEach((room, index) => {
-          var roomTemplate = ' <li class="list-group-item" channel="' + room._id + '"><i class="fa fa-comment-o"></i> ' + room.name + ' </li> '
+          var roomTemplate = ' <li class="list-group-item channel" channel="' + room._id + '"><i class="fa fa-comment-o"></i> ' + room.name + ' </li> '
           $('.channels').append(roomTemplate)
         })
 
@@ -26,6 +26,24 @@ $(document).ready(() => {
   })()
 
   var socket = io('//localhost:3000')
+  var currentRoom = undefined
+
+  $('.channels').on('click', '.channel', function (e) {
+    var roomId = $(this).attr('channel')
+
+    console.log(roomId)
+
+    socket.emit('join room', {
+      room: roomId
+    })
+
+    return false
+  })
+
+  socket.on('joined room', data => {
+    currentRoom = data.room
+    console.log('Joined: ' + currentRoom)
+  })
 
   $('#message').keypress( e => {
     if (e.which == 13) {
